@@ -1,0 +1,54 @@
+! {{ ansible_managed }}
+! Configuration File for keepalived
+
+global_defs {
+    router_id           {{ ansible_hostname }}
+{% if keepalived_notify_list is defined %}
+    smtp_server {{ keepalived_notify_smtp_server }}
+    smtp_connect_timeout {{ keepalived_notify_smtp_timeout }}
+    notification_email_from {{ keepalived_notify_from }}
+    notification_email {
+{% for email in keepalived_notify_list %}
+        {{ email }}
+{% endfor %}
+{% endif %}
+}
+
+# Requires keepalived-1.1.13
+{% for c in keepalived_checks %}
+vrrp_script {{ c.key }} {
+    script              "killall -0 {{ c.value.process }}"
+    interval            {{ c.value.period }}
+    weight              2                        # add 2 points of prio if OK
+}
+{% endfor %}
+
+{% for i in keepalived_vrrp_instances %}
+vrrp_instance {{ i.key }} {
+    state               {{ i.value.role }}
+    virtual_router_id   {{ i.value.virtual_router_id }}
+    {% if i.value.role.lower() == "master" %}
+    priority            {{ i.value.master_priority|default('50') }}
+    {% else %}
+    priority            {{ i.value.slave_priority|default('100') }}
+    {% endif %}
+    interface           {{ i.value.shared_iface }}
+    advert_int          {{ keepalived_advert_interval|defaults('1') }}
+    authentication {
+        auth_type       PASS
+        auth_pass       {{ i.value.auth_pass }}
+    }
+    virtual_ipaddress {
+{% for v in i.value.shared_vips %}
+        {{ v }} dev {{ i.value.shared_iface }} label {{ i.value.shared_iface }}:{{ i.value.virtual_router_id }}
+{% endfor %}
+    }
+{% if i.value.checks is defined %}
+    track_script {
+{% for c in i.value.checks %}
+        {{ c }}
+{% endfor %}
+    }
+{% endif %}
+}
+{% endfor %}

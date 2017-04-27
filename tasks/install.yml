@@ -1,0 +1,16 @@
+---
+- name: Install keepalived package (apt)
+  apt:
+    name: "{{ keepalived_package_name }}"
+    state: present
+  when: ansible_os_family == "Debian"
+  tags: keepalived
+
+- name: Install keepalived package (yum)
+  yum:
+    name: "{{ keepalived_package_name }}"
+    state: present
+  when: ansible_os_family == "RedHat"
+  tags: keepalived
+
+# vim:ft=ansible:

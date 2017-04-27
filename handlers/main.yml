@@ -1,0 +1,6 @@
+---
+- name: restart keepalived
+  service:
+    name: "{{ keepalived_service_name }}"
+    state: restarted
+# vim:ft=ansible:

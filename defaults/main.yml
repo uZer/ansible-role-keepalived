@@ -1,0 +1,4 @@
+---
+keepalived_service_name: keepalived
+keepalived_package_name: keepalived
+# vim:ft=ansible:
