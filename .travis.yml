@@ -9,6 +9,7 @@ env:
   - SITE=test.yml
 
 install:
+  - "ip addr"
   - "pip install ansible"
   # Add ansible.cfg to pick up roles path.
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
@@ -21,9 +22,9 @@ script:
   # Run the role/playbook with ansible-playbook.
   - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
 
-  # Travis CI's environment requires one _extra_ run for true idempotence :-/.
-  - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
-
+  - "sudo tail -n70 /var/log/syslog"
+  - "ip addr"
+  - "cat /etc/keepalived/keepalived.conf"
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
     ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo
