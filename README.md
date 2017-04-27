@@ -9,10 +9,10 @@ Dependencies
 ------------
 Should work on Centos, Redhat, Ubuntu, Debian.
 
-Variable usage example
-----------------------
+Exhaustive usage example
+------------------------
 
-* Host variables (should be defined in host_vars/...):
+* Host variables (should be defined in `host_vars/...`):
 
 
         keepalived_role:
@@ -21,7 +21,7 @@ Variable usage example
           "VI_3": "SLAVE"
 
 
-* Group variables (should be defined in group_vars/... per keepalived pod):
+* Group variables (should be defined in `group_vars/...` per keepalived pod):
 
 
         keepalived_vrrp_instances:
@@ -80,12 +80,15 @@ Variable usage example
 
 
 
-Minimum variable usage
-----------------------
+Minimum usage example
+---------------------
 You should at least define these variables:
 
+    # Per host
     keepalived_role:
       "VI_1": "MASTER"
+
+    # Per group
     keepalived_vrrp_instances:
       "VI_1":
         virtual_router_id: 10
@@ -97,7 +100,12 @@ You should at least define these variables:
 
 License
 -------
-Beerware
+"THE (extended) BEER-WARE LICENSE" (Revision 42.0815):
+
+As long as you retain this notice you can do whatever you want with this stuff.
+If we meet some day, and you think this stuff is worth it, you can buy me some
+beers in return.
+
 
 Author Information
 ------------------
