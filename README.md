@@ -72,7 +72,7 @@ Exhaustive usage example
         # OPTIONAL FOR NOTIFICATION AND TUNING
         keepalived_advert_interval: 1
         keepalived_notify_from: "keepalived@{{ ansible_fqdn }}"
-        keepalived_notify_smtp_server: "smtp.exmample.com"
+        keepalived_notify_smtp_server: "smtp.example.com"
         keepalived_notify_smtp_timeout: "30"
         keepalived_notify_list:
           - "noc@example.com"

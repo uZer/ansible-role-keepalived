@@ -1,4 +1,11 @@
 ---
 keepalived_service_name: keepalived
 keepalived_package_name: keepalived
+keepalived_vrrp_instances: []
+keepalived_checks: []
+vault_keepalived_vrrp_passwords: []
+keepalived_advert_interval: 1
+keepalived_notify_from: "keepalived@{{ ansible_fqdn }}"
+keepalived_notify_smtp_server: "smtp.example.com"
+keepalived_notify_smtp_timeout: "30"
 # vim:ft=ansible:
