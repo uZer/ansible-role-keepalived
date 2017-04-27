@@ -9,6 +9,8 @@ dist: trusty
 
 install:
   - "pip install ansible"
+  - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
+
 
 script:
   # Check
