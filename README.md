@@ -1,5 +1,7 @@
 ansible-role-keepalived
 =======================
+[![Build Status](https://travis-ci.org/uZer/ansible-role-keepalived.svg?branch=master)](https://travis-ci.org/uZer/ansible-role-keepalived)
+
 This role installs keepalived from apt/yum repository.
 Can setup multiple service checks and multiple VIP.
 
