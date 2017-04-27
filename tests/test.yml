@@ -1,7 +1,8 @@
 ---
-- name: infra basics
+- name: Deploy Keepalived
   hosts: localhost
   connection: local
   become: true
-  roles: ansible-role-keepalived
+  roles:
+    - role: ansible-role-keepalived
 # vim:ft=ansible:
