@@ -1,0 +1,10 @@
+---
+keepalived_role:
+  "VI_1": "MASTER"
+keepalived_vrrp_instances:
+  "VI_1":
+    virtual_router_id: 10
+    shared_iface: eth0
+    shared_vips:
+      - '10.127.50.5'
+    auth_pass: 'NLxQZYzXUfhjkJqWzVrPMua'
