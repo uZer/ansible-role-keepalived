@@ -1,0 +1,24 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: uZer
+  description: Keepalived Configuration
+  company: "TheVOID"
+  license: "Beerware"
+  min_ansible_version: 2.2
+  platforms:
+  - name: EL
+    versions:
+    - 6
+    - 7
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  galaxy_tags:
+    - networking
+    - loadbalancing
+    - vip

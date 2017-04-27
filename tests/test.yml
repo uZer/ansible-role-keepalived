@@ -1,8 +1,7 @@
 ---
 - name: Deploy Keepalived
   hosts: localhost
-  connection: local
-  become: true
+  remote_user: root
   roles:
-    - role: ansible-role-keepalived
+    - ansible-role-keepalived
 # vim:ft=ansible:
