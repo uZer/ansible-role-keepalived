@@ -1,10 +1,17 @@
 ---
 keepalived_role:
   "VI_1": "MASTER"
+  "VI_2": "MASTER"
 keepalived_vrrp_instances:
   "VI_1":
-    virtual_router_id: 10
+    virtual_router_id: 50
     shared_iface: 'eth0'
     shared_vips:
       - '10.127.50.5'
-    auth_pass: 'NLxQZYzXUfhjkJqWzVrPMua'
+    auth_pass: 'NLxQZYzU'
+  "VI_2":
+    virtual_router_id: 51
+    shared_iface: 'eth0'
+    shared_vips:
+      - '10.127.40.1'
+    auth_pass: 'JXZapJPW'
