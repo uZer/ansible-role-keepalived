@@ -55,8 +55,8 @@ keepalived_vrrp_instances:
       - '10.127.50.5'
     auth_pass: "{{ vault_vrrp_passwords["VI_3"] }}"
     checks:
-     - nginx
-     - keepalived
+     - chk_nginx
+     - chk_keepalived
 
 keepalived_checks:
   "chk_nginx":
