@@ -30,9 +30,9 @@ vrrp_instance {{ key }} {
     state               {{ keepalived_role[key] }}
     virtual_router_id   {{ value.virtual_router_id }}
 {% if keepalived_role[key].lower() == "master" %}
-    priority            {{ value.master_priority|default('50') }}
+    priority            {{ value.master_priority|default('100') }}
 {% else %}
-    priority            {{ value.slave_priority|default('100') }}
+    priority            {{ value.slave_priority|default('50') }}
 {% endif %}
     interface           {{ value.shared_iface }}
     advert_int          {{ keepalived_advert_interval|default('1') }}

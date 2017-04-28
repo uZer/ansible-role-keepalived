@@ -30,8 +30,8 @@ keepalived_role:
 keepalived_vrrp_instances:
   "VI_1":
     virtual_router_id: 51       # Will be used as interface label
-    master_priority: 50         # Priority. The smaller, the greater
-    slave_priority: 100
+    master_priority: 100         # Priority. The bigger, the greater
+    slave_priority: 50
     shared_iface: eth0
     shared_vips:
       - '10.127.50.3'
@@ -39,8 +39,8 @@ keepalived_vrrp_instances:
 
   "VI_2":
     virtual_router_id: 52
-    master_priority: 50
-    slave_priority: 100
+    master_priority: 100
+    slave_priority: 50
     shared_iface: eth0
     shared_vips:
       - '10.127.50.4'
@@ -48,8 +48,8 @@ keepalived_vrrp_instances:
 
   "VI_3":
     virtual_router_id: 53
-    master_priority: 50
-    slave_priority: 100
+    master_priority: 100
+    slave_priority: 50
     shared_iface: eth0
     shared_vips:
       - '10.127.50.5'
