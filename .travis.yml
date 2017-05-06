@@ -8,6 +8,9 @@ dist: trusty
 env:
   - SITE=test.yml
 
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+
 install:
   - "pip install ansible"
   # Add ansible.cfg to pick up roles path.
