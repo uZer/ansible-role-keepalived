@@ -55,8 +55,10 @@ keepalived_vrrp_instances:
       - '10.127.50.5'
     auth_pass: "{{ vault_vrrp_passwords["VI_3"] }}"
     checks:
-     - chk_nginx
-     - chk_keepalived
+      - chk_nginx
+      - chk_keepalived
+    settings:
+      garp_master_refresh: 20
 
 keepalived_checks:
   "chk_nginx":
@@ -80,6 +82,8 @@ keepalived_notify_smtp_timeout: "30"
 keepalived_notify_list:
   - "noc@example.com"
   - "abuse@example.com"
+keepalived_global_defs:
+  vrrp_garp_master_refresh: 60
 ```
 
 Minimum usage example
