@@ -18,7 +18,11 @@ global_defs {
 {% if keepalived_checks is defined %}
 {% for key, value in keepalived_checks.iteritems() %}
 vrrp_script {{ key }} {
+{% if value.script is defined %}
+    script              "{{ value.script | quote }}"
+{% else %}
     script              "killall -0 {{ value.process }}"
+{% endif %}
     interval            {{ value.period }}
     fall                2
     rise                5

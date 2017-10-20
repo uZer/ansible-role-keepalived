@@ -60,10 +60,10 @@ keepalived_vrrp_instances:
 
 keepalived_checks:
   "chk_nginx":
-    process: nginx              # Monitor NGINX
+    process: nginx              # Monitor NGINX using `killall -0`
     period: 2                   # every 2 seconds
   "chk_keepalived":
-    process: keepalived         # Monitor Keepalived
+    script: pgrep keepalived    # Monitor Keepalived
     period: 2                   # every 2 seconds
 
 # In vault:
