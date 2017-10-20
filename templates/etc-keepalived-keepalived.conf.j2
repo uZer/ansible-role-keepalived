@@ -12,6 +12,9 @@ global_defs {
         {{ email }}
 {% endfor %}
 {% endif %}
+{% for key, value in keepalived_global_defs.iteritems() %}
+    {{ key }} {{ value }}
+{% endfor %}
 }
 
 # Requires keepalived-1.1.13
@@ -53,5 +56,8 @@ vrrp_instance {{ key }} {
 {% endfor %}
     }
 {% endif %}
+{% for k, v in (value.settings | default({})).iteritems() %}
+    {{ k }} {{ v }}
+{% endfor %}
 }
 {% endfor %}
