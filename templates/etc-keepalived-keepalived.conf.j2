@@ -22,7 +22,7 @@ global_defs {
 {% for key, value in keepalived_checks.iteritems() %}
 vrrp_script {{ key }} {
 {% if value.script is defined %}
-    script              "{{ value.script | quote }}"
+    script              "{{ value.script }}"
 {% else %}
     script              "killall -0 {{ value.process }}"
 {% endif %}
