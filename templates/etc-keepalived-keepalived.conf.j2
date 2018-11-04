@@ -11,11 +11,11 @@ global_defs {
 {% for email in keepalived_notify_list %}
         {{ email }}
 {% endfor %}
+    }
 {% endif %}
 {% for key, value in keepalived_global_defs.iteritems() %}
     {{ key }} {{ value }}
 {% endfor %}
-}
 }
 
 # Requires keepalived-1.1.13
